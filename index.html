@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/bootstrap3/css/font-awesome.css">
+
+    <title>Local Weather App</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>LOCAL WEATHER APP</h1>
+        </header>
+
+        <section class="intro">
+            <div id="time">08:20 <span>PM</span></div>
+            <div id="greeting">Good morning</div>
+            
+        </section>
+
+        <main class="grid-container">
+            
+            <div class="grid grid-1">
+            </div>
+
+            <div class=" grid grid-2">
+                <div id="weather-info">Thunderstorm</div>
+                <img class="weather-icon" src="images/Lightning-storm.png" alt="Rainy">
+            </div>
+
+            <div class="grid grid-3">
+                <div><button id="share"><i class="fa fa-share"></i></button></div>
+                <div><button id="refresh"><i class="fa fa-refresh"></i></button></div>
+            </div>
+
+            <div class="grid grid-4">
+                
+            </div>
+
+            <div class=" grid grid-5">
+                <p><span id="temp">25</span><sup id="temp-unit">C</sup></p>
+            </div>
+
+            <div class="grid grid-6">
+                <button id="temp-convert">F</button>
+            </div>
+
+        </main>
+
+        <section class="misc-container">
+                <div class="misc ">
+                    <p>Wind</p>
+                </div>
+
+                <div>
+                    <p>Humidity</p>
+                </div>
+
+                <div>
+                    <p>Pressure</p>
+                </div>
+        </section>
+
+        <section id="modal">
+            <div id="share-modal">
+                <div class="modal-title">
+                    <h3>Share</h3>
+                    <span id="close-btn">X</span>
+                </div>
+                <div class="modal-content-group">
+                    <div class="modal-content top"><i class="fa fa-facebook"></i> Facebook</div>
+                    <div class="border-top"></div>
+                    <div class="modal-content bottom"><i class="fa fa-twitter"></i> Twitter</div>
+                </div>
+                
+            </div>
+        </section>
+            
+
+        <footer>
+            <div class="up">
+                <p>Designed with <i class="fa fa-heart"></i> and <i class="fa fa-music"></i></p>
+            </div>
+            <div class="copyright down">
+                <p>&copy;2017 <span>SAMAKINTUNDE</span></p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="main.js"></script>
+
+
+</body>
+</html>
