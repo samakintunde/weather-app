@@ -7,6 +7,11 @@ let close = document.getElementById('close-btn');
 let modal = document.getElementById('modal');
 let time = document.getElementById('time');
 let greeting = document.getElementById('greeting');
+let wind = document.getElementById('wind');
+let pressure = document.getElementById('pressure');
+let humidity = document.getElementById('humidity');
+let fb = document.getElementById('facebook');
+let twitter = document.getElementById('twitter');
 
 // Get position coordinates
 function getLocation() {
@@ -20,22 +25,33 @@ function getLocation() {
   let refresh = document.getElementById('refresh');
 
   function getPosition(position) {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-
+    let lat = Math.floor(position.coords.latitude);
+    let lon = Math.floor(position.coords.longitude);
+    
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://fcc-weather-api.glitch.me/api/current?lon=:' + lon + '&lat=:' + lat, 'true');
+    xhr.open('GET', `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`, 'true');
     xhr.send();
     
-    xhr.onload = function() {
-      if(xhr.status = 200) {
-        let res = xhr.responseText;
-        temp.innerText = Math.floor(res.main.temp);
-        weatherInfo.innerText = res.weather[0].description;
-        weatherIcon.setAttribute(src, res.weather[0].icon);
-        return res;
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4) {
+        if(xhr.status = 200) {
+          let res = xhr.responseText;
+          res = JSON.parse(res);
+          console.log(typeof res);
+          temp.innerText = Math.floor(res.main.temp);
+          weatherInfo.innerText = res.weather[0].description;
+          weatherIcon.setAttribute('src', res.weather[0].icon);
+          wind.innerText = res.wind.speed;
+          humidity.innerText = res.main.humidity;
+          pressure.innerText = res.main.pressure;
+          return res;
+        }
+        else {
+          temp.innerText = "An error occurred";
+        }
       }
-      console.log(res);
+      
+      
     }
   }
 }
@@ -71,7 +87,7 @@ function shareBtn() {
   modal.className = 'active';
   shareModal.className = 'active';
   if(modal.classList.active) {
-    console.log("active class is added");
+    alert("active class is added");
   }
 }
 
@@ -107,6 +123,13 @@ function setTime() {
 }
 
 setTime();
+
+// Social Media Buttons Click
+function fbCLick() {
+  window.open('https://www.facebook.com', '_blank');
+} 
+
+fb.addEventListener('click', fbClick);
 
 
 
